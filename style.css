@@ -9,10 +9,8 @@
 .grid {
   display: grid;
   max-width: 500px;
-  min-height: 500px;
   grid-template-columns: repeat(3, 150px);
   grid-template-rows: repeat(3, 150px);
-
   grid-gap: 10px;
   background: white;
 }
@@ -20,8 +18,9 @@
 .grid-squares {
   font-size: 140px;
   text-align: center;
-  /* center the cell content */
   border: 1px solid #222;
+  margin: 5px;
+  cursor: pointer;
 }
 
 body {

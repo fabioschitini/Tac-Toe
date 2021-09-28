@@ -26,10 +26,14 @@ const Gameflow=(b)=>{
     let squares=document.querySelectorAll(".grid-squares")
     const gameboardMaker=()=>{
         squares.forEach(square=>{
-             square.addEventListener("click",function (){
-                 turn=!turn
+            square.addEventListener("click", function () {
+                console.log('hey')
+                let score = document.querySelector("#score")
+                console.log(score.value)
+                if (score.value) {
+                   turn=!turn
 
-                 if(turn){
+                        if(turn){
                      if(square.textContent==="X"||square.textContent==="0"){
                          return 
                      }
@@ -38,17 +42,20 @@ const Gameflow=(b)=>{
                     square.textContent=Gameboards.gameboard[Gameboards.gameboard.length-1]
                     gameEnd.gameEnd()
 
-                 }
-                 else { 
+                            }
+                         else { 
                      
-                    if(square.textContent==="X"||square.textContent==="0"){
-                    return 
-                }
-                    Gameboards.gameboard.push("X")
-                    square.textContent=Gameboards.gameboard[Gameboards.gameboard.length-1]
-                    gameEnd.gameEnd()
+                             if(square.textContent==="X"||square.textContent==="0"){
+                             return 
+                        }
+                             Gameboards.gameboard.push("X")
+                         square.textContent=Gameboards.gameboard[Gameboards.gameboard.length-1]
+                         gameEnd.gameEnd()
+
+                            }  
 
                 }
+                
                 })
         })
     }
@@ -78,7 +85,13 @@ const GameOver=()=>{
     const playersName=()=>{
         scoreX.name=prompt("Submit the First players name")
         score0.name=prompt("Submit the Second players name")
-
+        score.textContent =
+            `
+            ${scoreX.name}  
+        ${scoreX.value} 
+        --     ${score0.name} 
+                             ${score0.value}
+                             `
     }
     const gameEnd=()=>{
         if( 
@@ -93,9 +106,13 @@ const GameOver=()=>{
         ) 
         {      squares.forEach(square=>{ square.textContent=""})
         scoreX.value=scoreX.value+1
-             score.textContent=`${scoreX.name}:${scoreX.value} -- ${score0.name}:${score0.value}`
+             score.textContent=`${scoreX.name} ${scoreX.value} -- ${score0.name} ${score0.value}`
             if(scoreX.value===3){
-                score.textContent=`${scoreX.name}:${scoreX.value} -- ${score0.name}:${score0.value}, Mr${scoreX.name} won, Congratulations!`
+                score.textContent = `${scoreX.name} ${scoreX.value} -- ${score0.name} ${score0.value}, Mr${scoreX.name} won,
+                 Congratulations!`
+                 scoreX.value = 0
+                score0.value = 0
+                score.value=false
             }
         }
 
@@ -112,30 +129,43 @@ const GameOver=()=>{
             {
                 squares.forEach(square=>{ square.textContent=""})
                 score0.value=score0.value+1
-                score.textContent=` ${scoreX.name}:${scoreX.value} -- ${score0.name}:${score0.value}` 
+                score.textContent=` ${scoreX.name} ${scoreX.value} -- ${score0.name} ${score0.value}` 
                 if(score0.value===3){
-                    score.textContent=` ${score0.name}:${scoreX.value} -- ${score0.name}:${score0.value}, Mr.${score0.name} won, Congratulations!`
+                    score.textContent = ` ${score0.name} ${scoreX.value} -- ${score0.name} ${score0.value}, Mr.${score0.name} won,
+                     Congratulations!`
+                    scoreX.value = 0
+                    score0.value = 0
+                     score.value=false
                 }  
             }   
 
     }
 
-                 const startGame=()=>{
+    const startGame = () => {
+       
+        console.log(score.value)
                 let start=document.querySelector("#start")
-                 start.addEventListener("click",(e)=>{
+        start.addEventListener("click", () => {
+        let score = document.querySelector("#score") 
+        score.value = true
+            scoreX.value = ''
+            score0.value = '' 
                 playersName()
                 gameFlow.gameboardMaker()
 
-    score.textContent=``
+    
     squares.forEach(square=>{ square.textContent=""})})
 
 
 }
 
-    const restartGame=()=>{
+    const restartGame = () => {
         let restart=document.querySelector("#restart")
-        restart.addEventListener("click",(e)=>{
-            score.textContent=``
+        restart.addEventListener("click", () => {
+            scoreX.value = ''
+            score0.value = ''
+            score.textContent = ` ${scoreX.name}:${scoreX.value} -- ${score0.name}:${score0.value}`    
+            score.value=false
             squares.forEach(square=>{ square.textContent=""})
         })
         
