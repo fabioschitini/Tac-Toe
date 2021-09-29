@@ -25,18 +25,25 @@ const Gameflow=(b)=>{
     let turn=false;
     let squares=document.querySelectorAll(".grid-squares")
     const gameboardMaker=()=>{
-        squares.forEach(square=>{
+        squares.forEach(square => {
+            square.value=true
             square.addEventListener("click", function () {
-                console.log('hey')
+                
                 let score = document.querySelector("#score")
-                console.log(score.value)
+                console.log(square.value)
                 if (score.value) {
-                   turn=!turn
+                    if (square.value) {
+                        turn = !turn 
+                        square.value = false
+                        console.log('sauqre is false')
+                    }
+                  
 
                         if(turn){
                      if(square.textContent==="X"||square.textContent==="0"){
                          return 
                      }
+                            
                     Gameboards.gameboard.push(0)
 
                     square.textContent=Gameboards.gameboard[Gameboards.gameboard.length-1]
@@ -84,7 +91,9 @@ const GameOver=()=>{
     score0.value=0
     const playersName=()=>{
         scoreX.name=prompt("Submit the First players name")
-        score0.name=prompt("Submit the Second players name")
+        score0.name = prompt("Submit the Second players name")
+        scoreX.value = 0
+        score0.value = 0
         score.textContent =
             `
             ${scoreX.name}  
@@ -93,7 +102,8 @@ const GameOver=()=>{
                              ${score0.value}
                              `
     }
-    const gameEnd=()=>{
+    const gameEnd = () => {
+        
         if( 
         (first.textContent==="X"&&second.textContent==="X"&&third.textContent==="X") 
         || (first.textContent==="X"&&fifht.textContent==="X"&&nineth.textContent==="X") 
@@ -104,7 +114,11 @@ const GameOver=()=>{
         || (third.textContent==="X"&&sixth.textContent==="X"&&nineth.textContent==="X") 
         || (third.textContent==="X"&&fifht.textContent==="X"&&seventh.textContent==="X") 
         ) 
-        {      squares.forEach(square=>{ square.textContent=""})
+        {
+            squares.forEach(square => {
+                square.textContent = ""
+                square.value=true
+            })
         scoreX.value=scoreX.value+1
              score.textContent=`${scoreX.name} ${scoreX.value} -- ${score0.name} ${score0.value}`
             if(scoreX.value===3){
@@ -112,7 +126,8 @@ const GameOver=()=>{
                  Congratulations!`
                  scoreX.value = 0
                 score0.value = 0
-                score.value=false
+                score.value = false
+                
             }
         }
 
@@ -127,7 +142,10 @@ const GameOver=()=>{
             || (third.textContent==="0"&&fifht.textContent==="0"&&seventh.textContent==="0") 
             ) 
             {
-                squares.forEach(square=>{ square.textContent=""})
+            squares.forEach(square => {
+                square.textContent = ""
+                square.value=true
+            })
                 score0.value=score0.value+1
                 score.textContent=` ${scoreX.name} ${scoreX.value} -- ${score0.name} ${score0.value}` 
                 if(score0.value===3){
@@ -135,26 +153,36 @@ const GameOver=()=>{
                      Congratulations!`
                     scoreX.value = 0
                     score0.value = 0
-                     score.value=false
+                    score.value = false
+                   
                 }  
-            }   
+        }   
+        else if (first.textContent !== "" && second.textContent !== "" && third.textContent !== ""
+            && fourth.textContent !== "" && fifht.textContent !== "" && sixth.textContent !== "" &&
+            seventh.textContent !== ""&&eighte.textContent!==""&&nineth.textContent!==""
+        ) {
+            squares.forEach(square => {
+                square.textContent = ""
+              square.value = true
+            })
+            console.log('all squares were filled ')
+        }
 
     }
 
     const startGame = () => {
        
-        console.log(score.value)
                 let start=document.querySelector("#start")
         start.addEventListener("click", () => {
         let score = document.querySelector("#score") 
         score.value = true
-            scoreX.value = ''
-            score0.value = '' 
                 playersName()
                 gameFlow.gameboardMaker()
-
-    
-    squares.forEach(square=>{ square.textContent=""})})
+            squares.forEach(square => {
+                square.textContent = ""
+                square.value=true
+            })
+        })
 
 
 }
@@ -162,11 +190,14 @@ const GameOver=()=>{
     const restartGame = () => {
         let restart=document.querySelector("#restart")
         restart.addEventListener("click", () => {
-            scoreX.value = ''
-            score0.value = ''
-            score.textContent = ` ${scoreX.name}:${scoreX.value} -- ${score0.name}:${score0.value}`    
-            score.value=false
-            squares.forEach(square=>{ square.textContent=""})
+            scoreX.value = 0
+            score0.value = 0
+            score.textContent = ` ${scoreX.name} ${scoreX.value} -- ${score0.name} ${score0.value}`    
+            score.value=true
+            squares.forEach(square => {
+                square.textContent = ""
+                square.value=true
+            })
         })
         
     }

@@ -12,15 +12,16 @@
   grid-template-columns: repeat(3, 150px);
   grid-template-rows: repeat(3, 150px);
   grid-gap: 10px;
-  background: white;
+  background: black;
 }
 
 .grid-squares {
   font-size: 140px;
   text-align: center;
   border: 1px solid #222;
-  margin: 5px;
+  margin-bottom: 3px;
   cursor: pointer;
+  background-color: white;
 }
 
 body {
@@ -28,14 +29,13 @@ body {
 }
 #buttons {
   display: flex;
-
   position: absolute;
-  top: 93%;
+  top: 83%;
   left: 30%;
 }
 #score {
-  color: #cfc56c;
-  font-size: 30px;
+  color: #ffec42;
+  font-size: 50px;
   text-align: center;
 }
 #start {
