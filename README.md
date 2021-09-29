@@ -1,11 +1,11 @@
 # Tic-Tac-Toe
 
-A book collection manager, where you can add, remove books.
+Designed and created a desktop-only game Tic Tac Toe. The purpose of the project was to use the Module pattern and the Factory Pattern to build and design objects to incorporate game logic.
 
 From The Odin Project's curriculum:
-https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library
+https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/tic-tac-toe
 
-link Live preview:https://fabioschitini.github.io/Library/
+link Live preview:https://fabioschitini.github.io/Tac-Toe/
 
 
 # Built with
@@ -28,18 +28,13 @@ link Live preview:https://fabioschitini.github.io/Library/
 # Outcome
 * Used Git and GitHub for project management.
 * Tried to maintain clean code.
-* Cross tested on Firefox and Chromium based browsers.
-* Learned the basics of local storage so data is not lost on page refresh
 
 # Summary
 
 ## What I learned
 
-* Deepened knowledge of DOM and its manipulation.
+* Use of  the Module pattern and the Factory Pattern to build and design objects to incorporate game logic.
 
-* Greatly improved functionality in general (shortened, optimized and reusable functions)
-
-* Improved CSS Grid understanding and usage.
 
 ## Author
 
